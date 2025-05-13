@@ -8,8 +8,6 @@ A Python toolkit for serial and USB communication, offering dynamic configuratio
 - **Thread-Safe**: Safe for concurrent use with built-in locking.
 - **Error Handling**: Comprehensive exception handling for reliable operation.
 - **Obfuscated Code**: Distributed as obfuscated code to protect intellectual property.
-- **User-Friendly**: Includes help (`__help__`) and method discovery (`__dir__`) methods.
-- **Buffer Management**: Flush input/output buffers for clean communication.
 
 ## Installation
 
@@ -17,7 +15,6 @@ A Python toolkit for serial and USB communication, offering dynamic configuratio
 - Python 3.6 or higher
 - A virtual environment (recommended)
 - `pyserial` library (installed automatically)
-- PyArmor runtime (installed automatically)
 
 ### Steps
 1. Activate your virtual environment (if using one):
@@ -29,7 +26,6 @@ A Python toolkit for serial and USB communication, offering dynamic configuratio
    ```bash
    pip install serialkit
    ```
-   This automatically installs `pyserial` and `pyarmor.pyarmor_runtime` as dependencies.
 3. Verify installation:
    ```python
    python -c "import serialkit; print(serialkit.__version__)"
@@ -106,12 +102,6 @@ try:
     fetcher = SerialFetcher(port="/dev/ttyACM0", baudrate=115200, log_level=logging.DEBUG)
     fetcher.connect()
 
-    # Flush buffers
-    fetcher.flush()
-
-    # Check configuration
-    print(f"Config: {fetcher.get_config()}")
-
     # Send multiple commands
     commands = ["CONFIG\n", "INFO\n"]
     for cmd in commands:
@@ -123,33 +113,18 @@ except Exception as e:
     print(f"Error: {e}")
 ```
 
-### Exploring the Library
-Use `__help__` and `__dir__` to learn about `SerialFetcher`:
-```python
-from serialkit import SerialFetcher
-fetcher = SerialFetcher(port="/dev/ttyACM0", baudrate=9600)
-print(fetcher.__help__())  # Display detailed help
-print(dir(fetcher))       # List public methods and attributes
-```
-
 ## License
 `serialkit` is distributed under a proprietary license. You may use it for personal or commercial projects but may not modify, reverse-engineer, or redistribute it. The library is provided as obfuscated code to protect the source code. See [LICENSE.txt](LICENSE.txt) for full details.
 
 ## Obfuscation
-To protect intellectual property, `serialkit` is distributed as obfuscated code using PyArmor. The PyArmor runtime (`pyarmor.pyarmor_runtime`) is included as a dependency and required to run the library. Source code is not provided, and reverse-engineering is prohibited under the license terms.
+To protect intellectual property, `serialkit` is distributed as obfuscated code using PyArmor. Source code is not provided, and reverse-engineering is prohibited under the license terms.
 
 ## Testing
 To test `serialkit` locally:
-1. **Running Tests**: Run the included test suite to verify functionality:
+1. **Unit Tests**: Run included tests with `pytest`:
    ```bash
-   # Install pytest
-   pip install pytest
-
-   # Run tests
    pytest tests/test_serialkit.py -v
    ```
-   This executes 16 unit tests covering connection, data reading, command sending, and thread safety, using mocked serial ports for reliability.
-
 2. **Hardware Testing**: Use a serial device (e.g., `/dev/ttyACM0` on Linux):
    - Ensure your user is in the `dialout` group:
      ```bash
@@ -157,7 +132,6 @@ To test `serialkit` locally:
      ```
      Log out and back in to apply.
    - Test with the usage examples above.
-
 3. **Virtual Ports**: Simulate a device with `socat` (Linux/macOS):
    ```bash
    socat -d -d pty,raw,echo=0 pty,raw,echo=0
