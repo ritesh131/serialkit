@@ -170,7 +170,7 @@ Contributions are not accepted, as the source code is proprietary and obfuscated
 ## Contact
 - Author: Ritesh Bajpai
 - Email: [bajpairitesh878@gmail.com]
-- GitHub: [https://github.com/yourusername/serialkit]
+- GitHub: [https://github.com/ritesh131/serialkit]
 
 ## Notes
 - Ensure the correct baud rate and port for your device (e.g., `115200` for some microcontrollers).

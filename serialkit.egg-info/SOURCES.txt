@@ -1,0 +1,13 @@
+LICENSE
+LICENSE.txt
+README.md
+setup.py
+pyarmor_runtime_000000/__init__.py
+serialkit/__init__.py
+serialkit/serialkit.py
+serialkit.egg-info/PKG-INFO
+serialkit.egg-info/SOURCES.txt
+serialkit.egg-info/dependency_links.txt
+serialkit.egg-info/requires.txt
+serialkit.egg-info/top_level.txt
+tests/test_serialkit.py
